@@ -69,7 +69,7 @@ namespace Interface {
 					int e1 = int.Parse(a1);
 					return Calculator.Divide(e1, n2);
 
-				case "multiply": case "multi": case "m":
+				case "multiply": case "multi": case "mult": case "m":
 					int f1 = Int32.Parse(a1);
 					return Calculator.Multiply(f1, n2);
 
