@@ -20,7 +20,7 @@ namespace Interface {
 			char[] space = { ' ' };
 			string[] cmd = Input.Split(space);
 
-			int Result = DoMath(cmd[0], Int32.Parse(cmd[1]), Int32.Parse(cmd[2]));
+			long Result = DoMath(cmd[0], Int32.Parse(cmd[1]), Int32.Parse(cmd[2]));
 
 			Console.Clear();
 
@@ -33,28 +33,28 @@ namespace Interface {
 
 		private static long DoMath(string function, int n1, int n2 = 0) {
 			switch (function.ToLower()) {
-				default: throw new Exception("Invalid Math Function"); break;
+				default: throw new Exception("Invalid Math Function");
 					
 				case "addition": case "add": case "a":
 					return Calculator.Add(n1, n2);
-					break;
 
 				case "subtract": case "sub": case "s":
 					return Calculator.Subtract(n1, n2);
-					break;
 
 				case "power": case "pow": case "p":
 					return Calculator.Power(n1, n2);
-					break;
 
 				case "factorial": case "fact": case "fac": case "f":
 					return Calculator.Factorial(n1);
-					break;
+
+				case "divide": case "div": case "d":
+					return Calculator.Divide(n1, n2);
 
 				case "multiply": case "multi": case "m":
 					return Calculator.Multiply(n1, n2);
-					break;
-		
+
+				case "sum":
+					return 0;
 			}
 		}
 
