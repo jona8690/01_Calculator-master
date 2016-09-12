@@ -46,7 +46,7 @@ namespace Interface {
 
 		private static long AlternativeMath(string function, string a1, int n2 = 0) {
 			switch (function.ToLower()) {
-				default: killapp("Invalid Math Function");
+				default: killapp("Invalid Math Function"); return 0;
 					
 				case "addition": case "add": case "a":
 					int n1 = Int32.Parse(a1);
