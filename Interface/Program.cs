@@ -11,6 +11,8 @@ namespace Interface {
 
 		Start:
 
+			Console.Clear();
+			Console.WriteLine("Type your Input:");
 			string Input = Console.ReadLine();
 
 			Console.Clear();
@@ -23,8 +25,11 @@ namespace Interface {
 
 			if (cmd.Length == 3) {
 				n2 = Int32.Parse(cmd[2]);
+			} else if (cmd.Length < 2 ){
+				killapp("Needs at least 2 parameters.", true);
+				goto Start;
 			} else if (cmd.Length > 3) {
-				killapp("Cannot take more than 3 parameters.");
+				killapp("Cannot take more than 3 parameters.", true);
 				goto Start;
 			} else n2 = 0;
 
@@ -57,6 +62,7 @@ namespace Interface {
 
 				case "factorial": case "fact": case "fac": case "f":
 					int d1 = int.Parse(a1);
+					if(d1 > 20) { killapp("Sorry, cannot factorial higher than 20"); return 0; }
 					return Calculator.Factorial(d1);
 
 				case "divide": case "div": case "d":
@@ -83,11 +89,14 @@ namespace Interface {
 			Console.Clear();
 		}
 
-		private static void killapp(string msg) {
+		private static void killapp(string msg, bool canreturn = false) {
 			Console.Clear();
 			Console.WriteLine("You broke the app! Nooooooooooooo");
 			Console.WriteLine(msg);
-			Console.Read();
+			Console.ReadKey();
+
+			if(!canreturn)
+				throw new Exception(msg);
 		}
 	}
 }
