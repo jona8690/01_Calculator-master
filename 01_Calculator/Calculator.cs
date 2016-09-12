@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace _01_Calculator
 {
@@ -20,12 +21,7 @@ namespace _01_Calculator
 
 		public static int Sum(int[] numbers)
         {
-            int sum = 0;
-            foreach(int x in numbers)
-            {
-                sum += x;
-            }
-            return sum;
+			return numbers.Sum();
         }
 
 		public static int Multiply(int v1, int v2)
