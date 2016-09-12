@@ -35,14 +35,9 @@ namespace _01_Calculator
             return total;
         }
 
-        internal static int Power(int v1, int v2)
+        internal static int Power(double v1, double v2)
         {
-            int total = 1;
-            for(int i = 0; i < v2; i++)
-            {
-                total *= v1;
-            }
-            return total;
+            return (int)Math.Pow(v1, v2);
         }
 
         internal static long Factorial(long v)
