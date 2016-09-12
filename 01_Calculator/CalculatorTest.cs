@@ -48,6 +48,7 @@ namespace _01_Calculator
         {
             Assert.AreEqual(24, Calculator.Factorial(4));
             Assert.AreEqual(5040, Calculator.Factorial(7));
+            Assert.AreEqual(3628800, Calculator.Factorial(10));
         }
     }
 }

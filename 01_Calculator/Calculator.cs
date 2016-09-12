@@ -11,16 +11,6 @@ namespace _01_Calculator
             return sum;
         }
 
-        internal static long Factorial(long v)
-        {
-            long sum = 1;
-            for(long i = v; i > 0; i--)
-            {
-                sum *= i;
-            }
-            return sum;
-        }
-
         internal static int Subtract(int v1, int v2)
         {
             int difference;
@@ -53,6 +43,16 @@ namespace _01_Calculator
                 total *= v1;
             }
             return total;
+        }
+
+        internal static long Factorial(long v)
+        {
+            long sum = 1;
+            for (long i = v; i > 0; i--)
+            {
+                sum *= i;
+            }
+            return sum;
         }
     }
 }
