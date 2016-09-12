@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace _01_Calculator
 {
@@ -6,33 +7,22 @@ namespace _01_Calculator
     {
 		public static int Add(int v1, int v2)
         {
-            int sum;
-            sum = v1 + v2;
-            return sum;
+            return v1 + v2;
         }
 
 		public static int Subtract(int v1, int v2)
-        {
-            int difference;
-            difference = v1 - v2;
-            return difference;
+        {       
+            return v1 - v2;
         }
 
 		public static int Sum(int[] numbers)
         {
-            int sum = 0;
-            foreach(int x in numbers)
-            {
-                sum += x;
-            }
-            return sum;
+			return numbers.Sum();
         }
 
 		public static int Multiply(int v1, int v2)
         {
-            int total;
-            total = v1 * v2;
-            return total;
+            return v1 * v2;
         }
 
 		public static int Power(double v1, double v2)
@@ -49,5 +39,9 @@ namespace _01_Calculator
             }
             return sum;
         }
-    }
+
+		internal static int Divide(int v1, int v2) {
+			return v1 / v2;
+		}
+	}
 }

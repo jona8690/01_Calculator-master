@@ -38,6 +38,13 @@ namespace _01_Calculator
         {
             Assert.AreEqual(20, Calculator.Multiply(2, 10));
         }
+
+		[TestMethod]
+		public void Divide() {
+			Assert.AreEqual(10, Calculator.Divide(70, 7));
+			Assert.AreEqual(13, Calculator.Divide(169, 13));
+			Assert.AreEqual(4, Calculator.Divide(28, 7));
+		}
         [TestMethod]
         public void Power()
         {
