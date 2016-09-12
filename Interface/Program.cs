@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using _01_Calculator;
 
 namespace Interface {
@@ -26,19 +27,39 @@ namespace Interface {
 			if (cmd[0] == "!commands") {
 				sendCommands();
 			} else {
+				String pattern = @"(\d+)\s+([-+*/x])\s+(\d+)";
 
-				if (cmd.Length == 3) {
-					n2 = Int32.Parse(cmd[2]);
-				} else if (cmd.Length < 2) {
-					killapp("Needs at least 2 parameters.", true);
-					goto Start;
-				} else if (cmd.Length > 3) {
-					killapp("Cannot take more than 3 parameters.", true);
-					goto Start;
-				} else n2 = 0;
+				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+				Match m = r.Match(cmd[0]);
 
-				long Result = AlternativeMath(cmd[0], cmd[1], n2);
+				if (m.Success) {
+					string Method = "";
 
+					switch(m.Groups[2].Value) {
+						case "+": Method = "add"; break;
+						case "-": Method = "sub"; break;
+						case "/": Method = "div"; break;
+						case "*": case "x": Method = 'mult'; break;
+						default: killapp("Invalid Math Operator"); goto Start;
+					}
+
+					int v1 = int.Parse(m.Groups[1].Value);
+					int v2 = int.Parse(m.Groups[3].Value);
+
+					long Result = DoMath(Method, v1, v2);
+				} else {
+					if (cmd.Length == 3) {
+						n2 = Int32.Parse(cmd[2]);
+					} else if (cmd.Length < 2) {
+						killapp("Needs at least 2 parameters.", true);
+						goto Start;
+					} else if (cmd.Length > 3) {
+						killapp("Cannot take more than 3 parameters.", true);
+						goto Start;
+					} else n2 = 0;
+
+					long Result = DoMath(cmd[0], cmd[1], n2);
+				}
 				Console.Clear();
 
 				Console.WriteLine("And the result of\n" + Input + "\nis:");
@@ -48,7 +69,7 @@ namespace Interface {
 			goto Start;
 		}
 
-		private static long AlternativeMath(string function, string a1, int n2 = 0) {
+		private static long DoMath(string function, string a1, int n2 = 0) {
 			switch (function.ToLower()) {
 				default: killapp("Invalid Math Function"); return 0;
 					
@@ -88,7 +109,8 @@ namespace Interface {
 
 		private static void sendCommands() {
 
-			string Commands = @"There are 2 formats which you can enter math functions.
+			string Commands = 
+@"There are 2 formats which you can enter math functions.
 Standard format:
 	NOT YET IMPLEMENTED
 
@@ -112,7 +134,7 @@ Alternative Format:
 		Alternative commands:
 		f, fac, fact
 	sum <number>,<number>,<number>,...
-			";
+";
 
 			Console.Clear();
 			Console.WriteLine(Commands);
