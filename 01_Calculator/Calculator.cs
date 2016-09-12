@@ -40,7 +40,7 @@ namespace _01_Calculator
             return sum;
         }
 
-		internal static int Divide(int v1, int v2) {
+		public static int Divide(int v1, int v2) {
 			return v1 / v2;
 		}
 	}
