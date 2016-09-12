@@ -62,7 +62,7 @@ namespace Interface {
 
 				case "factorial": case "fact": case "fac": case "f":
 					int d1 = int.Parse(a1);
-					if(d1 > 20) { killapp("Sorry, cannot factorial higher than 20"); return 0; }
+					if(d1 > 20) { killapp("Sorry, cannot factorial higher than 20"); }
 					return Calculator.Factorial(d1);
 
 				case "divide": case "div": case "d":
