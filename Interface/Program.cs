@@ -33,7 +33,7 @@ namespace Interface {
 				goto Start;
 			} else n2 = 0;
 
-			long Result = DoMath(cmd[0], cmd[1], n2);
+			long Result = AlternativeMath(cmd[0], cmd[1], n2);
 
 			Console.Clear();
 
@@ -44,7 +44,7 @@ namespace Interface {
 			goto Start;
 		}
 
-		private static long DoMath(string function, string a1, int n2 = 0) {
+		private static long AlternativeMath(string function, string a1, int n2 = 0) {
 			switch (function.ToLower()) {
 				default: killapp("Invalid Math Function"); throw new Exception("Meh");
 					
