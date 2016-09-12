@@ -83,9 +83,10 @@ namespace Interface {
 			Console.Clear();
 		}
 
-		private static void killapp() {
+		private static void killapp(string msg) {
 			Console.Clear();
 			Console.WriteLine("You broke the app! Nooooooooooooo");
+			Console.WriteLine(msg);
 			Console.Read();
 		}
 	}
