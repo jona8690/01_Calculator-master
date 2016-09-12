@@ -23,23 +23,27 @@ namespace Interface {
 			string[] cmd = Input.Split(space);
 			int n2;
 
-			if (cmd.Length == 3) {
-				n2 = Int32.Parse(cmd[2]);
-			} else if (cmd.Length < 2 ){
-				killapp("Needs at least 2 parameters.", true);
-				goto Start;
-			} else if (cmd.Length > 3) {
-				killapp("Cannot take more than 3 parameters.", true);
-				goto Start;
-			} else n2 = 0;
+			if (cmd[0] == "!commands") {
+				sendCommands();
+			} else {
 
-			long Result = AlternativeMath(cmd[0], cmd[1], n2);
+				if (cmd.Length == 3) {
+					n2 = Int32.Parse(cmd[2]);
+				} else if (cmd.Length < 2) {
+					killapp("Needs at least 2 parameters.", true);
+					goto Start;
+				} else if (cmd.Length > 3) {
+					killapp("Cannot take more than 3 parameters.", true);
+					goto Start;
+				} else n2 = 0;
 
-			Console.Clear();
+				long Result = AlternativeMath(cmd[0], cmd[1], n2);
 
-			Console.WriteLine("And the result of\n" + Input + "\nis:");
-			Console.WriteLine(Result);
+				Console.Clear();
 
+				Console.WriteLine("And the result of\n" + Input + "\nis:");
+				Console.WriteLine(Result);
+			}
 			EndProgram();
 			goto Start;
 		}
@@ -80,6 +84,38 @@ namespace Interface {
 
 					return Calculator.Sum(g1);
 			}
+		}
+
+		private static void sendCommands() {
+
+			string Commands = @"There are 2 formats which you can enter math functions.
+Standard format:
+	NOT YET IMPLEMENTED
+
+Alternative Format:
+	add <number> <number>
+		Alternative commands:
+		a, addition
+	sub <number> <number>
+		Alternative commands:
+		s, subtract
+	multiply <number> <number>
+		Alternative commands:
+		m, mult, multi
+	divide <number> <number>
+		Alternative commands:
+		d, div
+	power <number> <power>
+		Alternative commands:
+		p, pow
+	factorial <number>
+		Alternative commands:
+		f, fac, fact
+	sum <number>,<number>,<number>,...
+			";
+
+			Console.Clear();
+			Console.WriteLine(Commands);
 		}
 
 		private static void EndProgram() {
