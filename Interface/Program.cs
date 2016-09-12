@@ -54,6 +54,7 @@ namespace Interface {
 				case "multiply": case "multi": case "m":
 					return Calculator.Multiply(n1, n2);
 					break;
+		
 			}
 		}
 
