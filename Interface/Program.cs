@@ -13,6 +13,7 @@ namespace Interface {
 		Start:
 
 			Console.Clear();
+			Console.WriteLine("For Assistance type\n!commands\n");
 			Console.WriteLine("Type your Input:");
 			string Input = Console.ReadLine();
 
@@ -27,27 +28,30 @@ namespace Interface {
 			if (cmd[0] == "!commands") {
 				sendCommands();
 			} else {
-				String pattern = @"(\d+)\s+([-+*/x])\s+(\d+)";
+				String pattern = @"(\d+)\s+([-+*/])\s+(\d+)";
+				long Result;
 
 				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
 				Match m = r.Match(cmd[0]);
 
 				if (m.Success) {
+					Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
 					string Method = "";
 
 					switch(m.Groups[2].Value) {
 						case "+": Method = "add"; break;
 						case "-": Method = "sub"; break;
 						case "/": Method = "div"; break;
-						case "*": case "x": Method = 'mult'; break;
+						case "*": case "x": Method = "mult"; break;
 						default: killapp("Invalid Math Operator"); goto Start;
 					}
 
-					int v1 = int.Parse(m.Groups[1].Value);
+					string v1 = m.Groups[1].Value;
 					int v2 = int.Parse(m.Groups[3].Value);
 
-					long Result = DoMath(Method, v1, v2);
+					Result = DoMath(Method, v1, v2);
 				} else {
+					Console.WriteLine("DEBUG --Regex was NOT successfull--"); Console.ReadKey();
 					if (cmd.Length == 3) {
 						n2 = Int32.Parse(cmd[2]);
 					} else if (cmd.Length < 2) {
@@ -58,7 +62,7 @@ namespace Interface {
 						goto Start;
 					} else n2 = 0;
 
-					long Result = DoMath(cmd[0], cmd[1], n2);
+					Result = DoMath(cmd[0], cmd[1], n2);
 				}
 				Console.Clear();
 
