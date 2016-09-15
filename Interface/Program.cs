@@ -28,14 +28,14 @@ namespace Interface {
 			if (cmd[0] == "!commands") {
 				sendCommands();
 			} else {
-				String pattern = @"(\d+)\s+([-+*/])\s+(\d+)";
+				String pattern = @"(\d+)\s*([-+*/])\s*(\d+)";
 				long Result;
 
 				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
-				Match m = r.Match(cmd[0]);
+				Match m = r.Match(Input);
 
 				if (m.Success) {
-					Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
+					//Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
 					string Method = "";
 
 					switch(m.Groups[2].Value) {
@@ -51,7 +51,7 @@ namespace Interface {
 
 					Result = DoMath(Method, v1, v2);
 				} else {
-					Console.WriteLine("DEBUG --Regex was NOT successfull--"); Console.ReadKey();
+					//Console.WriteLine("DEBUG --Regex was NOT successfull--"); Console.ReadKey();
 					if (cmd.Length == 3) {
 						n2 = Int32.Parse(cmd[2]);
 					} else if (cmd.Length < 2) {
@@ -98,7 +98,7 @@ namespace Interface {
 					int e1 = int.Parse(a1);
 					return Calculator.Divide(e1, n2);
 
-				case "multiply": case "multi": case "m":
+				case "multiply": case "multi": case "mult": case "m":
 					int f1 = Int32.Parse(a1);
 					return Calculator.Multiply(f1, n2);
 
