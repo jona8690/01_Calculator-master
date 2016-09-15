@@ -32,7 +32,7 @@ namespace Interface {
 				long Result;
 
 				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
-				Match m = r.Match(cmd[0]);
+				Match m = r.Match(Input);
 
 				if (m.Success) {
 					Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
