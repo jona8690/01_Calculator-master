@@ -28,7 +28,7 @@ namespace Interface {
 			if (cmd[0] == "!commands") {
 				sendCommands();
 			} else {
-				String pattern = @"(\d+)\s+([-+*/])\s+(\d+)";
+				String pattern = @"(\d+)\s*([-+*/])\s*(\d+)";
 				long Result;
 
 				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
