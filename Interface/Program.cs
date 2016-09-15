@@ -35,7 +35,7 @@ namespace Interface {
 				Match m = r.Match(Input);
 
 				if (m.Success) {
-					Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
+					//Console.WriteLine("DEBUG --Regex was successfull--"); Console.ReadKey();
 					string Method = "";
 
 					switch(m.Groups[2].Value) {
@@ -51,7 +51,7 @@ namespace Interface {
 
 					Result = DoMath(Method, v1, v2);
 				} else {
-					Console.WriteLine("DEBUG --Regex was NOT successfull--"); Console.ReadKey();
+					//Console.WriteLine("DEBUG --Regex was NOT successfull--"); Console.ReadKey();
 					if (cmd.Length == 3) {
 						n2 = Int32.Parse(cmd[2]);
 					} else if (cmd.Length < 2) {
