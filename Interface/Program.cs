@@ -15,7 +15,7 @@ namespace Interface {
 			Console.Clear();
 			Console.WriteLine("For Assistance type\n!commands\n");
 			Console.WriteLine("Type your Input:");
-			string Input = Console.ReadLine();
+			string Input = Console.ReadLine().ToLower();
 
 			Console.Clear();
 			Console.WriteLine("Doing your math homework...");
@@ -115,10 +115,14 @@ namespace Interface {
 
 			string Commands = 
 @"There are 2 formats which you can enter math functions.
-Standard format:
-	NOT YET IMPLEMENTED
+Standard format: (Matematical equation)
+	Adding........:	<number> + <number>
+	Subtracting...:	<number> - <number>
+	Multiplying...:	<number> * <number>
+			<number> x <number>
+	Division......:	<number> / <number>
 
-Alternative Format:
+Alternative Format: (Command based: <command> <input> <input2>)
 	add <number> <number>
 		Alternative commands:
 		a, addition
