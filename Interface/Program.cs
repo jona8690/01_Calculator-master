@@ -43,7 +43,7 @@ namespace Interface {
 						case "-": Method = "sub"; break;
 						case "/": Method = "div"; break;
 						case "*": case "x": Method = "mult"; break;
-						default: killapp("Invalid Math Operator"); goto Start;
+						default: killapp("Invalid Math Operator", true); goto Start;
 					}
 
 					string v1 = m.Groups[1].Value;
