@@ -31,7 +31,10 @@ namespace Interface {
 				String pattern = @"(\d+)\s+([-+*/])\s+(\d+)";
 				long Result;
 
+				// Instantiate the regular expression object.
 				Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+
+				// Match the regular expression pattern against a text string.
 				Match m = r.Match(cmd[0]);
 
 				if (m.Success) {
