@@ -116,7 +116,10 @@ namespace Interface {
 			string Commands = 
 @"There are 2 formats which you can enter math functions.
 Standard format:
-	NOT YET IMPLEMENTED
+	<number> + <number>
+	<number> - <number>
+	<number> * <number>
+	<number> / <number>
 
 Alternative Format:
 	add <number> <number>
